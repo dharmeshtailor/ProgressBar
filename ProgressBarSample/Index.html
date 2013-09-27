@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Progress Bar Demo</title>
+</head>
+
+<body>
+<div class="ProgressBar">
+    <h1>Progress Bars Demo</h1>
+    <div class="mainDiv">
+        <div class="outerDiv">
+            <input type="hidden" value="0" id="hiddenPB1" />
+            <div class="innerDiv" id="progressBar1"></div>
+        </div>
+        <div class="innerText">0%</div>
+    </div>
+    <div class="mainDiv">
+        <div class="outerDiv">
+            <input type="hidden" value="0" id="hiddenPB2" />
+            <div class="innerDiv" id="progressBar2"></div>
+        </div>
+        <div class="innerText">0%</div>
+    </div>
+    <div class="mainDiv">
+        <div class="outerDiv">
+            <input type="hidden" value="0" id="hiddenPB3" />
+            <div class="innerDiv" id="progressBar3"></div>
+        </div>
+        <div class="innerText">0%</div>
+    </div>
+    <div class="controls">
+        <select id="selectProgressBar">
+            <option value="progressBar1">Progress Bar 1</option>
+            <option value="progressBar2">Progress Bar 2</option>
+            <option value="progressBar3">Progress Bar 3</option>
+        </select>
+        <button progressAdd="false" class="progressButton" progressValue="25">-25</button>
+        <button progressAdd="false" class="progressButton" progressValue="10">-10</button>
+        <button progressAdd="true" class="progressButton" progressValue="10">+10</button>
+        <button progressAdd="true" class="progressButton" progressValue="25">+25</button>
+    </div>
+</div>
+    <script src="Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+	<script src="Scripts/ProgressBar.js" type="text/javascript"></script>
+	<link href="Style/ProgressBar.css" rel="stylesheet" type="text/css" />
+</body>
+</html>
