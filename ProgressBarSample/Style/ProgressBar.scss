@@ -1,0 +1,57 @@
+/*  ProgressBar.scss */
+
+$divHeight: 50px;
+$mainDivWidth: 80%;
+$outerDivWidth: 85%;
+$innerDivWidth: 0;
+$innerTextWidth: 10%;
+$margin: 25%;
+$backGroundColorNoError: #AFD7E6;
+$backGroundColorError: red;
+$borderColor: #9AE8F3;
+
+@mixin div-float-left{
+	height: $divHeight;
+	float: left;
+}
+
+.ProgressBar {
+    margin-left: $margin;
+    margin-right: $margin;
+	
+	.mainDiv {
+        height: $divHeight;
+        width: $mainDivWidth;
+		
+		.outerDiv {
+            @include div-float-left;
+            width: $outerDivWidth;
+            border: 1px solid $borderColor;
+            margin-bottom: 10px;
+            
+			
+			.innerDiv {
+                height: $divHeight;
+                width: $innerDivWidth;
+            }
+        }
+		
+		.innerText {
+            @include div-float-left;
+			width: $innerTextWidth;
+			margin-left: 5px;
+        }
+    }
+	
+	.controls {
+        display: inline-block;
+    }
+}
+
+.backGroundColorBlue {
+    background-color: $backGroundColorNoError;
+}
+
+.backGroundColorRed {
+    background-color: $backGroundColorError;
+}
