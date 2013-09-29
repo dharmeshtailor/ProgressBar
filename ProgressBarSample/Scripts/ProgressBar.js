@@ -1,4 +1,6 @@
-﻿function ProgressBarCtrl($scope) {
+﻿var progressBarApp = angular.module('progressBarApp', []);
+
+progressBarApp.controller('ProgressBarCtrl', ['$scope', function ($scope) {
     $scope.selectedProgressBar = "progressBar1";
     $scope.progressBarData = [{ "value": "progressBar1", "name": "Progress Bar 1", "width": 0, "displayWidth": 0, "class": "" },
 							   { "value": "progressBar2", "name": "Progress Bar 2", "width": 0, "displayWidth": 0, "class": "" },
@@ -36,4 +38,4 @@
             width: item.width + "%"
         };
     };
-}
+}]);
