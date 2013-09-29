@@ -1,28 +1,39 @@
-﻿$(".progressButton").live("click", function () {
-    var progressBarId = "#" + $("#selectProgressBar").val();
-    var progressBarCurrentWidth = parseInt($(progressBarId).prev("input").val());
-    var progress = parseInt($(this).attr("progressValue"));
-    var progressAdd = $(this).attr("progressAdd");
-    var progressBarNewWidth = 0;    
+﻿function ProgressBarCtrl($scope) {
+    $scope.selectedProgressBar = "progressBar1";
+    $scope.progressBarData = [{ "value": "progressBar1", "name": "Progress Bar 1", "width": 0, "displayWidth": 0, "class": "" },
+							   { "value": "progressBar2", "name": "Progress Bar 2", "width": 0, "displayWidth": 0, "class": "" },
+						       { "value": "progressBar3", "name": "Progress Bar 3", "width": 0, "displayWidth": 0, "class": "" }];
 
-    if (progressAdd == "true") {
-        progressBarNewWidth = progressBarCurrentWidth + progress;
-    }
-    else {
-        progressBarNewWidth = progressBarCurrentWidth - progress;
-    }
-    if (progressBarNewWidth > 0 && progressBarNewWidth <= 100) {
-        $(progressBarId).removeClass("backGroundColorRed").addClass("backGroundColorBlue");
-        $(progressBarId).css("width", progressBarNewWidth + "%");
-    }
-    else if (progressBarNewWidth > 100) {
-        $(progressBarId).css("width", "100%");
-        $(progressBarId).removeClass("backGroundColorBlue").addClass("backGroundColorRed");
-    }
-    else if (progressBarNewWidth <= 0) {
-        $(progressBarId).css("width", 0);
-        progressBarNewWidth = 0;
-    }
-    $(progressBarId).prev("input").val(progressBarNewWidth);
-    $(progressBarId).parent(".outerDiv").next(".innerText").html(progressBarNewWidth + "%");
-});
+    $scope.changeProgress = function (progress, progressAdd) {
+
+        angular.forEach($scope.progressBarData, function (attr) {
+            if (attr.value === $scope.selectedProgressBar) {
+                if (progressAdd) {
+                    attr.displayWidth = attr.displayWidth + progress;
+                }
+                else {
+                    attr.displayWidth = attr.displayWidth - progress;
+                }
+
+                if (attr.displayWidth > 0 && attr.displayWidth <= 100) {
+                    attr.class = "backGroundColorBlue";
+                    attr.width = attr.displayWidth
+                }
+                else if (attr.displayWidth > 100) {
+                    attr.width = 100;
+                    attr.class = "backGroundColorRed";
+                }
+                else if (attr.displayWidth <= 0) {
+                    attr.width = attr.displayWidth = 0;
+                    attr.class = "";
+                }
+            }
+        });
+    };
+
+    $scope.widthStyle = function (item) {
+        return {
+            width: item.width + "%"
+        };
+    };
+}
